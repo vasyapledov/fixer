@@ -1,0 +1,8 @@
+name: Fixer API
+type: module
+description: 'Provides API to Fixer (external currency exchange rates service)'
+core_version_requirement: ^9 || ^10
+package: custom
+configure: fixer_api.settings
+dependencies:
+  - ultimate_cron:ultimate_cron

@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Fixer API module file.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function fixer_api_update_rates() {
+  $config = \Drupal::config('fixer_api.settings');
+  // Get selected currencies.
+  $fixer_currencies_list = $config->get('fixer_currencies_list');
+
+  if (empty($fixer_currencies_list)) {
+    return;
+  }
+
+  // Get labels only.
+  $fixer_currencies_array = array_keys($fixer_currencies_list);
+  $connection = \Drupal::database();
+  $currency_names = $connection->select('fixer_currency', 'f')
+    ->fields('f', ['name'])
+    ->distinct(TRUE)
+    ->condition('name', $fixer_currencies_array, 'IN')
+    ->execute()->fetchCol();
+
+  $queue = \Drupal::queue('fixer_rates_queue_worker');
+  $queue->deleteQueue();
+
+  // Add items to the queue.
+  foreach ($currency_names as $name) {
+    $queue->createItem($name);
+  }
+
+}
+
+/**
+ * Implements hook_cron().
+ */
+function fixer_api_cron() {
+  fixer_api_update_rates();
+}

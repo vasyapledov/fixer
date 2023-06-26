@@ -1,0 +1,23 @@
+fixer_api.admin_config:
+  path: '/admin/config/fixer'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Fixer Settings'
+  requirements:
+    _permission: 'administer site configuration'
+
+fixer_api.settings:
+  path: '/admin/config/fixer/settings'
+  defaults:
+    _form: '\Drupal\fixer_api\Form\FixerSettingsForm'
+    _title: 'Fixer currency service settings'
+  requirements:
+    _permission: 'administer fixer settings'
+
+fixer_api.exchange_test:
+  path: '/admin/config/fixer/exchange-test'
+  defaults:
+    _form: '\Drupal\fixer_api\Form\FixerConvertForm'
+    _title: 'Fixer currency exchange test'
+  requirements:
+    _permission: 'administer fixer settings'

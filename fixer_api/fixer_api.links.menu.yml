@@ -1,0 +1,19 @@
+fixer_api.admin_config:
+ title: 'Fixer'
+ parent: system.admin_config
+ route_name: fixer_api.admin_config
+ weight: -60
+
+fixer_api.admin_settings:
+ title: 'Fixer Settings'
+ description: 'Global settings for Fixer.'
+ parent: fixer_api.admin_config
+ route_name: fixer_api.settings
+ weight: 1
+
+fixer_api.exchange_test:
+  title: 'Fixer exchange test'
+  description: 'Test currency convertion'
+  parent: fixer_api.admin_config
+  route_name: fixer_api.exchange_test
+  weight: 2

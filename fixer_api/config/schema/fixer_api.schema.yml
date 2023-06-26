@@ -1,0 +1,28 @@
+fixer_api.settings:
+  type: mapping
+  label: 'Fixer currency service settings.'
+  mapping:
+    _core:
+      type: _core_config_info
+    langcode:
+      type: string
+      label: 'Language code'
+    fixer_api_link:
+      type: string
+      label: 'Fixer API link'
+    fixer_api_code:
+      type: string
+      label: 'Fixer API code'
+    fixer_test_mode:
+      type: integer
+      label: 'TEST mode'
+    fixer_currencies_list:
+      type: sequence
+      label: 'Fixer currencies list'
+      sequence:
+        type: string
+    full_currencies_list:
+      type: sequence
+      label: 'Full currencies list'
+      sequence:
+        type: string

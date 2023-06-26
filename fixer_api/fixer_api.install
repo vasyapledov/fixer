@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Fixer API install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function fixer_api_install() {
+  // Initial update.
+  /** @var \Drupal\fixer_api\FixerHandler $fixer_handler */
+  $fixer_handler = \Drupal::service('fixer_api.handler');
+  $fixer_handler->getCurrenciesList(TRUE);
+  $fixer_handler->saveRates(['EUR']);
+}
