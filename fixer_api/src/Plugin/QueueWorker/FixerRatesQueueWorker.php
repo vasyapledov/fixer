@@ -8,7 +8,7 @@ use Drupal\fixer_api\FixerHandler;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Process a queue of media items to fetch their thumbnails.
+ * Process a queue to fetch CurrencyRate's items.
  *
  * @QueueWorker(
  *   id = "fixer_rates_queue_worker",
